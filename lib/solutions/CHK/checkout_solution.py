@@ -8,11 +8,11 @@ def checkout(skus):
     offers = {
         'A': [(5, 200), (3, 130)], # 3A for 130
         'B': [(2, 45)],  # 2B for 45   
-        'F': [(3, prices['F'] * 2)], # 2F for 1 free F
     }
 
     free_item_offers = {
         'E': (2, 1, 'B'), # 2E for 1 free B
+        'F': (2, 1, 'F'), # 2F for 1 free F
     }
     
     # !!! Caution when changing the prices !!!
@@ -39,8 +39,11 @@ def checkout(skus):
     for item, (offer_qty, free_qty, free_item) in free_item_offers.items():
         if item not in counts or free_item not in counts:
             continue
-
-        num_free_offers = counts[item] // offer_qty
+        if item == free_item:
+            # Ensure number of self free item is sufficient
+            num_free_offers = counts[item] // (offer_qty + free_qty) 
+        else:
+            num_free_offers = counts[item] // offer_qty
         counts[free_item] = max(0, counts[free_item] - num_free_offers * free_qty)
 
     total = 0
@@ -62,5 +65,6 @@ def checkout(skus):
     return total
     
     
+
 
 
