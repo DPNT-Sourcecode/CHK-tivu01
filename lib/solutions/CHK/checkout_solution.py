@@ -10,6 +10,10 @@ def checkout(skus):
         'B': (2, 45)   # 2B for 45   
     }
 
+    free_item_offers = {
+        'E': (2, 1, 'B'), # 2E for 1 free B
+    }
+
     counts = {}
 
     # Check for invalid inputs
@@ -34,5 +38,6 @@ def checkout(skus):
     return total
     
     
+
 
 
