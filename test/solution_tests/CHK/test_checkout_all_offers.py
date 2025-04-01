@@ -33,20 +33,18 @@ class TestCheckoutAllOffers():
             offer_qty = offer['offer_qty']
             offer_price = offer['offer_price']
 
-            group_items.sort(key= lambda x: prices[x], reverse=True)
-
-            # 1. Test single group offer
+            # Test single group offer
             skus = ''
             for i in range(offer_qty):
                 skus += group_items[i]
 
             assert checkout_solution.checkout(skus) == offer_price
 
-            # 3. Test multiple group offers
+            # Test multiple group offers
             skus = ''
             for i in range(offer_qty * 2):
                 skus += group_items[i % len(group_items)]
-                
+
             assert checkout_solution.checkout(skus) == offer_price * 2
 
     def test_checkout_group_offers_with_extras(self):
@@ -71,7 +69,6 @@ class TestCheckoutAllOffers():
             random.shuffle(l)
             skus = ''.join(l)
 
-
             assert checkout_solution.checkout(skus) == offer_price + prices[cheapest_item]
 
             # Test multiple group offers with extras
@@ -88,6 +85,7 @@ class TestCheckoutAllOffers():
             random.shuffle(l)
             skus = ''.join(l)
             assert checkout_solution.checkout(skus) == offer_price * 2 + prices[cheapest_item]
+
 
 
 
