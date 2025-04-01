@@ -38,10 +38,10 @@ class TestCheckout():
         assert checkout_solution.checkout('FFF') == 20
 
     def test_checkout_free_item_offer2_same_item(self):
-        assert checkout_solution.checkout('FFFFFF') == (20 * 2)
+        assert checkout_solution.checkout('FFFF') == (20 + 10)
 
     def test_checkout_multiple_free_item_offer_same_item(self):
-        assert checkout_solution.checkout('FFFFFFF') == (20 * 2 + 10)
+        assert checkout_solution.checkout('FFFFFF') == (20 + 20)
 
     def test_checkout_no_free_item_offer_same_item(self):
         assert checkout_solution.checkout('FF') == 20
