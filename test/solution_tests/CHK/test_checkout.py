@@ -19,3 +19,8 @@ class TestCheckout():
 
     def test_checkout_empty(self):
         assert checkout_solution.checkout('') == 0
+
+
+    # Free item offer tests
+    def test_checkout_free_item_offer(self):
+        assert checkout_solution.checkout('EEB') == 80

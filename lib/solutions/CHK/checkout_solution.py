@@ -4,7 +4,7 @@
 # skus = unicode string
 def checkout(skus):
 
-    prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15}
+    prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
     offers = {
         'A': (3, 130), # 3A for 130
         'B': (2, 45)   # 2B for 45   
@@ -22,6 +22,14 @@ def checkout(skus):
             return -1
         
         counts[sku] = counts.get(sku, 0) + 1
+    
+    # Apply free item offers
+    for item, (offer_qty, free_qty, free_item) in free_item_offers.items():
+        if item not in counts and free_item not in counts:
+            continue
+
+        num_free_offers = counts[item] // offer_qty
+        counts[free_item] = max(0, counts[free_item] - num_free_offers * free_qty)
 
     total = 0
 
