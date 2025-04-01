@@ -13,6 +13,17 @@ def checkout(skus):
     free_item_offers = {
         'E': (2, 1, 'B'), # 2E for 1 free B
     }
+    
+    # !!! Caution when changing the prices !!!
+    # There is a edge case where applying the free item offers first
+    # then the multi-priced offer may yield a higher price for the customer.
+    # e.g. E = 40 B = 30 and if 2B for $1 and 2E for 1B free, for 'EEBB'
+    # 1. Apply free item offer first will yield: 40 + 40 + 30 = 110
+    # 2. Apply multi-priced offer first will yield: 40 + 40 + 1 = 81
+
+
+    # This implementation applies the free item offers first, then the 
+    # multi-priced offers.
 
     counts = {}
 
@@ -37,14 +48,19 @@ def checkout(skus):
     for item, count in counts.items():
         if item in offers:
             for offer_qty, offer_price in offers[item]:
+                if count < offer_qty:
+                    continue
+
                 complete_offers = count // offer_qty
-                remaining_items = count % offer_qty
-                total += complete_offers * offer_price + remaining_items * prices[item]
+                total += complete_offers * offer_price
+                count %= offer_qty # Update remaining item count
+            total += count * prices[item]
         else:
             total += count * prices[item]
 
     return total
     
     
+
 
 

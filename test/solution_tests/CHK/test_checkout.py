@@ -39,3 +39,7 @@ class TestCheckout():
 
     def test_checkout_multiple_multi_offer(self):
         assert checkout_solution.checkout('AAAAAAAA') == (200 + 130)
+
+    def test_checkout_multiple_multi_offer_and_remaining(self):
+        assert checkout_solution.checkout('AAAAAAAAA') == (200 + 130 + 50)
+
