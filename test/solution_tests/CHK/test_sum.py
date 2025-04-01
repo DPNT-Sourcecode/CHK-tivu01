@@ -15,4 +15,7 @@ class TestCheckout():
         assert checkout_solution.checkout('AAAA') == (130 + 50)
 
     def test_checkout_invalid(self):
-        assert checkout_solution.checkout('AX') == 
+        assert checkout_solution.checkout('AX') == -1
+
+    def test_checkout_empty(self):
+        assert checkout_solution.checkout('') == 0
