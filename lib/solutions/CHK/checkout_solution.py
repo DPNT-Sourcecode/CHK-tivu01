@@ -30,12 +30,26 @@ def checkout(skus):
 
     # Apply group offers
     for offer in group_offers:
-        items = offer['items']
+        group_items = offer['items']
         offer_qty = offer['offer_qty']
         offer_price = offer['offer_price']
         
+        # Collect all items in group offers
+        grouped_items = []
+        for item in group_items:
+            if item in counts:
+                grouped_items.extend([item] * counts[item])
 
+        # Maximise Discount
+        group_items.sort(key=lambda x: prices[x], reversed=True)
 
+        complete_group_offers = len(grouped_items) // offer_qty
+
+        total += complete_group_offers * offer_price
+
+        # Remove the grouped items from counts
+        for i in range(complete_group_offers * offer_qty):
+            counts[group_items[i]] -= 1
 
 
     # Calculate total price
