@@ -85,7 +85,3 @@ class TestCheckoutAllOffers():
             random.shuffle(l)
             skus = ''.join(l)
             assert checkout_solution.checkout(skus) == offer_price * 2 + prices[cheapest_item]
-
-
-
-
