@@ -1,4 +1,4 @@
-from prices_and_offers import prices, multi_offers, free_item_offers
+from .prices_and_offers import prices, multi_offers, free_item_offers
 
 # noinspection PyUnusedLocal
 # skus = unicode string
