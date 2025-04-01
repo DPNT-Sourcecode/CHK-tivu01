@@ -1,4 +1,4 @@
-from .prices_and_offers import prices, multi_offers, free_item_offers
+from .prices_and_offers import prices, multi_offers, free_item_offers, group_offers
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -28,6 +28,14 @@ def checkout(skus):
 
     total = 0
 
+    # Apply group offers
+    for offer in group_offers:
+        items = offer['items']
+        offer_qty = offer['offer_qty']
+        offer_price = offer['offer_price']
+
+
+
     # Calculate total price
     for item, count in counts.items():
         if item in multi_offers:
@@ -45,5 +53,6 @@ def checkout(skus):
     return total
     
     
+
 
 
