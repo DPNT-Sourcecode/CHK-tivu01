@@ -30,20 +30,23 @@ prices = {
     'V': 50,
     'W': 20,
     'X': 17,
-    'Y': 10,
-    'Z': 50
+    'Y': 20,
+    'Z': 21
 }
 
-# Caution: Offer list must be in descending order of offer quantity
 multi_offers = {
     'A': [(5, 200), (3, 130)], # 3A for 130, 5A for 200
     'B': [(2, 45)],  # 2B for 45   
     'H': [(10, 80), (5, 45)], # 5H for 45, 10H for 80
-    'K': [(2, 15
+    'K': [(2, 120)], # 2Kfor 120
     'P': [(5, 200)], # 5P for 200
     'Q': [(3, 80)], # 3Q for 80
     'V': [(3, 130), (2, 90)], # 2V for 90, 3V for 130
 }
+
+# Caution: Offer list must be in descending order of offer quantity
+for item in multi_offers:
+    multi_offers[item].sort(reverse=True, key=lambda x: x[0])
 
 free_item_offers = {
     'E': (2, 1, 'B'), # 2E for 1 free B
@@ -61,3 +64,4 @@ group_offers = [
         'offer_price': 45
     }
 ]
+
