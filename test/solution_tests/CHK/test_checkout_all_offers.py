@@ -27,4 +27,28 @@ class TestCheckoutAllOffers():
             assert checkout_solution.checkout(item * offer_qty + free_item * free_qty) == prices[item] * offer_qty
 
     def test_checkout_group_offers(self):
+        for offer in group_offers:
+            group_items = offer['items']
+            offer_qty = offer['offer_qty']
+            offer_price = offer['offer_price']
+
+            group_items.sort(key= lambda x: prices[x], reverse=True)
+
+            # Apply single group offer
+            skus = ''
+            for i in range(offer_qty):
+                skus += group_items[i]
+
+            assert checkout_solution.checkout(skus) == offer_price
+
+            # Apply single group offer with extras
+            skus = ''
+            for i in range(offer_qty + 1):
+                skus += group_items[i]
+
+            assert checkout_solution.checkout(skus) == offer_price + prices[group_items[i]]
+
+
+
         pass
+
