@@ -34,6 +34,7 @@ prices = {
     'Z': 50
 }
 
+# Caution: Offer list must be in descending order of offer quantity
 multi_offers = {
     'A': [(5, 200), (3, 130)], # 3A for 130
     'B': [(2, 45)],  # 2B for 45   
@@ -41,7 +42,7 @@ multi_offers = {
     'K': [(2, 150)], # 2K for 150
     'P': [(5, 200)], # 5p for 200
     'Q': [(3, 80)], # 3Q for 80
-    'V': [(2, 90), (3, 130)], # 5H for 45
+    'V': [(3, 130), (2, 90)], # 2V for 90, 3V for 130
 }
 
 free_item_offers = {

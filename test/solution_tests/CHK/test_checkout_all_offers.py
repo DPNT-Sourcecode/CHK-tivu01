@@ -12,7 +12,6 @@ class TestCheckoutAllOffers():
             # Apply single multi-priced offer
             for offer_qty, offer_price in offers:
                 assert checkout_solution.checkout(item * offer_qty) == offer_price 
-                assert checkout_solution.checkout(item * (offer_qty + 1)) == (offer_price + prices[item])
 
             skus = ''
             total_offer_price = 0
@@ -21,8 +20,10 @@ class TestCheckoutAllOffers():
                 skus += item * offer_qty
                 total_offer_price += offer_price
                 
-            assert checkout_solution.checkout(skus) == total_offer_price 
-            assert checkout_solution.checkout(skus + item) == (total_offer_price + prices[item])
+            assert checkout_solution.checkout(skus) == total_offer_price
 
-    # def test_checkout_free_item_offers(self):
+    def test_checkout_free_item_offers(self):
+        for item, (offer_qty, free_qty, free_item) in free_item_offers.items():
+            assert checkout_solution.checkout(item * offer_qty + free_item * free_qty) == prices[item] * offer_qty
+
 
