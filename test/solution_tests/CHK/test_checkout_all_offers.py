@@ -35,25 +35,59 @@ class TestCheckoutAllOffers():
 
             group_items.sort(key= lambda x: prices[x], reverse=True)
 
-            # Apply single group offer
+            # 1. Test single group offer
             skus = ''
             for i in range(offer_qty):
                 skus += group_items[i]
 
             assert checkout_solution.checkout(skus) == offer_price
 
-            # Apply single group offer with extras
+            # 3. Test multiple group offers
+            skus = ''
+            for i in range(offer_qty * 2):
+                skus += group_items[i % len(group_items)]
+                
+            assert checkout_solution.checkout(skus) == offer_price * 2
+
+    def test_checkout_group_offers_with_extras(self):
+        for offer in group_offers:
+            group_items = offer['items']
+            offer_qty = offer['offer_qty']
+            offer_price = offer['offer_price']
+
+            group_items.sort(key= lambda x: prices[x], reverse=True)
+
+            # Test single group offer with extras
             skus = ''
             for i in range(offer_qty + 1):
                 skus += group_items[i]
             
             l = list(skus)
+
+            # Get the cheapest item in sku
+            cheapest_item = min(l, key=lambda x: prices[x])
+
+            # Shuffle SKU
             random.shuffle(l)
             skus = ''.join(l)
-            assert checkout_solution.checkout(skus) == offer_price + prices[group_items[i]]
 
 
+            assert checkout_solution.checkout(skus) == offer_price + prices[cheapest_item]
 
-        pass
+            # Test multiple group offers with extras
+            skus = ''
+            for i in range(offer_qty * 2 + 1):
+                skus += group_items[i % len(group_items)]
+
+            l = list(skus)
+
+            # Get the cheapest item in sku
+            cheapest_item = min(l, key=lambda x: prices[x])
+
+            # Shuffle SKU
+            random.shuffle(l)
+            skus = ''.join(l)
+            assert checkout_solution.checkout(skus) == offer_price * 2 + prices[cheapest_item]
+
 
 
