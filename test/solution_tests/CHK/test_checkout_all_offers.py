@@ -28,4 +28,3 @@ class TestCheckoutAllOffers():
 
     def test_checkout_group_offers(self):
         pass
-

@@ -33,6 +33,8 @@ def checkout(skus):
         items = offer['items']
         offer_qty = offer['offer_qty']
         offer_price = offer['offer_price']
+        
+
 
 
 
@@ -53,6 +55,5 @@ def checkout(skus):
     return total
     
     
-
 
 
