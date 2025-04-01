@@ -25,5 +25,3 @@ class TestCheckoutAllOffers():
     def test_checkout_free_item_offers(self):
         for item, (offer_qty, free_qty, free_item) in free_item_offers.items():
             assert checkout_solution.checkout(item * offer_qty + free_item * free_qty) == prices[item] * offer_qty
-
-
