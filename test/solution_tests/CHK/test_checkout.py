@@ -32,3 +32,10 @@ class TestCheckout():
 
     def test_checkout_no_free_item_offer(self):
         assert checkout_solution.checkout('EB') == 70
+
+    # Multiple multi-priced offer tests
+    def test_checkout_best_multi_offer(self):
+        assert checkout_solution.checkout('AAAAA') == 200
+
+    def test_checkout_multiple_multi_offer(self):
+        assert checkout_solution.checkout('AAAAAAAA') == (200 + 130)
