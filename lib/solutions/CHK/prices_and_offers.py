@@ -64,4 +64,3 @@ group_offers = [
         'offer_price': 45
     }
 ]
-
