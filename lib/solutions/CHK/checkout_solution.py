@@ -12,6 +12,7 @@ def checkout(skus):
 
     free_item_offers = {
         'E': (2, 1, 'B'), # 2E for 1 free B
+        'F': (2, 1, 'F'), # 2F for 1 free F
     }
     
     # !!! Caution when changing the prices !!!
@@ -61,5 +62,6 @@ def checkout(skus):
     return total
     
     
+
 
 
