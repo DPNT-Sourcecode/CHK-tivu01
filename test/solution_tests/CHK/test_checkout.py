@@ -33,6 +33,19 @@ class TestCheckout():
     def test_checkout_no_free_item_offer(self):
         assert checkout_solution.checkout('EB') == 70
 
+    # Free item offer same item tests
+    def test_checkout_free_item_offer_same_item(self):
+        assert checkout_solution.checkout('FFF') == 20
+
+    def test_checkout_free_item_offer2_same_item(self):
+        assert checkout_solution.checkout('FFFFFF') == (20 * 2)
+
+    def test_checkout_multiple_free_item_offer_same_item(self):
+        assert checkout_solution.checkout('FFFFFFF') == (20 * 2 + 10)
+
+    def test_checkout_no_free_item_offer_same_item(self):
+        assert checkout_solution.checkout('FF') == 20
+
     # Multiple multi-priced offer tests
     def test_checkout_best_multi_offer(self):
         assert checkout_solution.checkout('AAAAA') == 200

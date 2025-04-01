@@ -4,7 +4,7 @@
 # skus = unicode string
 def checkout(skus):
 
-    prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
+    prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10}
     offers = {
         'A': [(5, 200), (3, 130)], # 3A for 130
         'B': [(2, 45)]   # 2B for 45   
