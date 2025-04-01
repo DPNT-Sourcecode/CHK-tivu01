@@ -7,12 +7,12 @@ def checkout(skus):
     prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10}
     offers = {
         'A': [(5, 200), (3, 130)], # 3A for 130
-        'B': [(2, 45)]   # 2B for 45   
+        'B': [(2, 45)],  # 2B for 45   
+        'F': [(3, prices['F'] * 2)], # 2F for 1 free F
     }
 
     free_item_offers = {
         'E': (2, 1, 'B'), # 2E for 1 free B
-        'F': (2, 1, 'F'), # 2F for 1 free F
     }
     
     # !!! Caution when changing the prices !!!
@@ -62,6 +62,7 @@ def checkout(skus):
     return total
     
     
+
 
 
 
