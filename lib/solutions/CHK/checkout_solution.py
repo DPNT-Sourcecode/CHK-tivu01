@@ -6,8 +6,8 @@ def checkout(skus):
 
     prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
     offers = {
-        'A': (3, 130), # 3A for 130
-        'B': (2, 45)   # 2B for 45   
+        'A': [(5, 200), (3, 130)], # 3A for 130
+        'B': [(2, 45)]   # 2B for 45   
     }
 
     free_item_offers = {
@@ -36,16 +36,17 @@ def checkout(skus):
     # Calculate total price
     for item, count in counts.items():
         if item in offers:
-            offer_qty, offer_price = offers[item]
-            complete_offers = count // offer_qty
-            remaining_items = count % offer_qty
-            total += complete_offers * offer_price + remaining_items * prices[item]
+            for offer_qty, offer_price in offers[item]:
+                complete_offers = count // offer_qty
+                remaining_items = count % offer_qty
+                total += complete_offers * offer_price + remaining_items * prices[item]
         else:
             total += count * prices[item]
 
     return total
     
     
+
 
 
 
