@@ -54,10 +54,10 @@ free_item_offers = {
 
 }
 
-group_offers = {
+group_offers = [
     {
         'items': ['S', 'T', 'X', 'Y', 'Z'],
         'offer_qty': 3,
         'offer_price': 45
     }
-}
+]
