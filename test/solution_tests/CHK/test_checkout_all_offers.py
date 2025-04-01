@@ -1,5 +1,6 @@
 from solutions.CHK import checkout_solution
 from solutions.CHK.prices_and_offers import prices, multi_offers, free_item_offers, group_offers
+import random
 
 class TestCheckoutAllOffers():
     def test_checkout_item_price(self):
@@ -45,10 +46,14 @@ class TestCheckoutAllOffers():
             skus = ''
             for i in range(offer_qty + 1):
                 skus += group_items[i]
-
+            
+            l = list(skus)
+            random.shuffle(l)
+            skus = ''.join(l)
             assert checkout_solution.checkout(skus) == offer_price + prices[group_items[i]]
 
 
 
         pass
+
 
