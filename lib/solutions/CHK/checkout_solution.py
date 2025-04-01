@@ -11,8 +11,9 @@ def checkout(skus):
     }
 
     # Check for invalid inputs
-    if for sku in skus
+    # if for sku in skus
     
     
+
 
 
