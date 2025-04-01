@@ -63,3 +63,9 @@ class TestCheckout():
     def test_checkout_group_offer_maximise_discount(self):
         # X has the lowest price of the group offer, so dont include it in offer
         assert checkout_solution.checkout('STXZ') == 45 + 17
+
+    def test_checkout_group_offer_two_groups(self):
+        # X has the lowest price of the group offer, so dont include it in offer
+        assert checkout_solution.checkout('STXYZXY') == 45 * 2 + 17
+
+    
