@@ -1,5 +1,5 @@
 from solutions.CHK import checkout_solution
-from solutions.CHK.prices_and_offers import prices, multi_offers, free_item_offers
+from solutions.CHK.prices_and_offers import prices, multi_offers, free_item_offers, group_offers
 
 class TestCheckoutAllOffers():
     def test_checkout_item_price(self):
@@ -25,3 +25,7 @@ class TestCheckoutAllOffers():
     def test_checkout_free_item_offers(self):
         for item, (offer_qty, free_qty, free_item) in free_item_offers.items():
             assert checkout_solution.checkout(item * offer_qty + free_item * free_qty) == prices[item] * offer_qty
+
+    def test_checkout_group_offers(self):
+        pass
+

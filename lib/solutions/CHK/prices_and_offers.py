@@ -42,7 +42,7 @@ multi_offers = {
     'K': [(2, 150)], # 2K for 150
     'P': [(5, 200)], # 5P for 200
     'Q': [(3, 80)], # 3Q for 80
-    'V': [(2, 90), (3, 130)], # 2V for 90, 3V for 130
+    'V': [(3, 130), (2, 90)], # 2V for 90, 3V for 130
 }
 
 free_item_offers = {
@@ -52,4 +52,12 @@ free_item_offers = {
     'R': (3, 1, 'Q'), # 3R for 1 free Q
     'U': (3, 1, 'U'), # 3U for 1 free U
 
+}
+
+group_offers = {
+    {
+        'items': ['S', 'T', 'X', 'Y', 'Z'],
+        'offer_qty': 3,
+        'offer_price': 45
+    }
 }
