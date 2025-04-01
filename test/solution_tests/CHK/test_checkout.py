@@ -20,7 +20,15 @@ class TestCheckout():
     def test_checkout_empty(self):
         assert checkout_solution.checkout('') == 0
 
-
     # Free item offer tests
     def test_checkout_free_item_offer(self):
         assert checkout_solution.checkout('EEB') == 80
+
+    def test_checkout_free_item_offer2(self):
+        assert checkout_solution.checkout('EEBB') == (80 + 30)
+
+    def test_checkout_multiple_free_item_offer(self):
+        assert checkout_solution.checkout('EEEEBB') == (80 + 80)
+
+    def test_checkout_no_free_item_offer(self):
+        assert checkout_solution.checkout('EB') == 70

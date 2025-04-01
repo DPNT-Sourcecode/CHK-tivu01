@@ -25,7 +25,7 @@ def checkout(skus):
     
     # Apply free item offers
     for item, (offer_qty, free_qty, free_item) in free_item_offers.items():
-        if item not in counts and free_item not in counts:
+        if item not in counts or free_item not in counts:
             continue
 
         num_free_offers = counts[item] // offer_qty
